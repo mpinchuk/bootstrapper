@@ -188,6 +188,16 @@ class BootstrapperL5ServiceProvider extends ServiceProvider
             }
         );
     }
+    
+    /**
+     * Getting session token according to laravel version
+     */
+    private function getSessionToken($app){
+        if($app::VERSION >= '5.4.0'){
+            return $app['session.store']->token();
+        }
+        return $app['session.store']->getToken();
+    }
 
     /**
      * Registers the FormBuilder class into the IoC
@@ -203,11 +213,12 @@ class BootstrapperL5ServiceProvider extends ServiceProvider
         $this->app->bind(
             'bootstrapper::form',
             function ($app) {
+                $sessionStoreToken = $this->getSessionToken($app);
                 $form = new Form(
                     $app->make('collective::html'),
                     $app->make('url'),
                     $app->make('view'),
-                    $app['session.store']->getToken()
+                    $sessionStoreToken
                 );
 
                 return $form->setSessionStore($app['session.store']);
