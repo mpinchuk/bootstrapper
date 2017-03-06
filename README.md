@@ -1,3 +1,5 @@
+Forked from https://github.com/patricktalmadge/bootstrapper and updated to work with Laravel 5.4
+
 # Bootstrapper
 
 Latest stable version: [![Latest Stable Version](https://poser.pugx.org/patricktalmadge/bootstrapper/v/stable.svg)](https://packagist.org/packages/patricktalmadge/bootstrapper)
@@ -15,14 +17,14 @@ Add the following to your `composer.json` file :
 
 ```json
 "require": {
-    "patricktalmadge/bootstrapper": "~5",
+    "mpinchuk/bootstrapper": "~5",
 },
 ```
 
 or execute
 
 ```bash
-composer require patricktalmadge/bootstrapper
+composer require mpinchuk/bootstrapper
 ```
 
 Then register Bootstrapper's service provider with Laravel:
